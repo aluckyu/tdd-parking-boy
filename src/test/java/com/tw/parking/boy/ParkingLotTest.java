@@ -2,8 +2,7 @@ package com.tw.parking.boy;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
     @Test
@@ -22,5 +21,17 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(0);
 
         assertThrows(NoCapacityException.class, () -> parkingLot.parking(car));
+    }
+
+    @Test
+    void should_success_when_take_car_given_valid_ticket(){
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot(10);
+        Ticket ticket = parkingLot.parking(car);
+
+        Car takingCar = parkingLot.takeCar(ticket);
+
+        assertNotNull(takingCar);
+        assertEquals(car, takingCar);
     }
 }
