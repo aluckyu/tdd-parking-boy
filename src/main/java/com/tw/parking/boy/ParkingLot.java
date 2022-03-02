@@ -2,6 +2,7 @@ package com.tw.parking.boy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ParkingLot {
     private final int capacity;
@@ -21,6 +22,9 @@ public class ParkingLot {
     }
 
     public Car takeCar(Ticket ticket) {
+        if (Objects.isNull(ticket)) {
+            throw  new InvalidTicketException();
+        }
         return cars.get(0);
     }
 }

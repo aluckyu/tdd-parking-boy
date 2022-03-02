@@ -24,7 +24,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_success_when_take_car_given_valid_ticket(){
+    void should_success_when_take_car_given_valid_ticket() {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(10);
         Ticket ticket = parkingLot.parking(car);
@@ -34,4 +34,16 @@ public class ParkingLotTest {
         assertNotNull(takingCar);
         assertEquals(car, takingCar);
     }
+
+
+    @Test
+    void should_return_invalid_ticket_when_take_car_given_invalid_ticket() {
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot(10);
+        parkingLot.parking(car);
+
+        assertThrows(InvalidTicketException.class, () -> parkingLot.takeCar(null));
+    }
+
+
 }
