@@ -45,5 +45,13 @@ public class ParkingLotTest {
         assertThrows(InvalidTicketException.class, () -> parkingLot.takeCar(null));
     }
 
+    @Test
+    void should_return_invalid_ticket_when_take_car_given_used_ticket() {
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot(10);
+        Ticket ticket = parkingLot.parking(car);
+        parkingLot.takeCar(ticket);
 
+        assertThrows(InvalidTicketException.class, () -> parkingLot.takeCar(ticket));
+    }
 }
