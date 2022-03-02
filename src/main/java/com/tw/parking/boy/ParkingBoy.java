@@ -11,6 +11,13 @@ public class ParkingBoy {
     }
 
     public Ticket parking(Car car) {
-        return parkingLots.get(0).parking(car);
+        if (parkingLots.get(0).hasCapacity()) {
+            return parkingLots.get(0).parking(car);
+        }
+
+        if (parkingLots.get(1).hasCapacity()) {
+            return parkingLots.get(1).parking(car);
+        }
+        return null;
     }
 }
