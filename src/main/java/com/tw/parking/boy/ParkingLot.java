@@ -13,7 +13,7 @@ public class ParkingLot {
     }
 
     public Ticket parking(Car car) {
-        if (ticketCarMap.size() >= capacity) {
+        if (!hasCapacity()) {
             throw new NoCapacityException();
         }
 
