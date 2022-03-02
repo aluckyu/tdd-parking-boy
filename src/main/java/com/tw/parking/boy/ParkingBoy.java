@@ -13,6 +13,6 @@ public class ParkingBoy {
     public Ticket parking(Car car) {
         return parkingLots.stream().filter(ParkingLot::hasCapacity).findFirst()
                 .map(parkingLot -> parkingLot.parking(car))
-                .orElse(null);
+                .orElseThrow(NoCapacityException::new);
     }
 }

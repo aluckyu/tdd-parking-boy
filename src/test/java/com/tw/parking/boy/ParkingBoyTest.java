@@ -35,4 +35,15 @@ public class ParkingBoyTest {
         assertNotNull(ticket);
         assertEquals(car, secondParkingLot.takeCar(ticket));
     }
+
+    @Test
+    void should_return_no_capacity_when_parking_given_manage_two_parking_lot_both_has_no_capacity() {
+        Car car = new Car();
+        ParkingLot firstParkingLot = new ParkingLot(0);
+        ParkingLot secondParkingLot = new ParkingLot(0);
+        List<ParkingLot> parkingLots = Lists.newArrayList(firstParkingLot, secondParkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+
+        assertThrows(NoCapacityException.class, () -> parkingBoy.parking(car));
+    }
 }
