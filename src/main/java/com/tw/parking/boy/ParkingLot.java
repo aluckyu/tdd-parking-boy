@@ -23,12 +23,7 @@ public class ParkingLot {
     }
 
     public Car takeCar(Ticket ticket) {
-        if (Objects.isNull(ticket)) {
-            throw new InvalidTicketException();
-        }
-
-        Car car = ticketCarMap.get(ticket);
-        if (Objects.isNull(car)) {
+        if (Objects.isNull(ticketCarMap.get(ticket))) {
             throw new InvalidTicketException();
         }
 
