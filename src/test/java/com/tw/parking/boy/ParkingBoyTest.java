@@ -59,4 +59,13 @@ public class ParkingBoyTest {
         assertNotNull(takingCar);
         assertEquals(takingCar, parkingCar);
     }
+
+    @Test
+    void should_return_invalid_ticket_when_take_car_with_invalid_ticket() {
+        List<ParkingLot> parkingLots = Lists.newArrayList(new ParkingLot(10), new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Ticket ticket = new Ticket();
+
+        assertThrows(InvalidTicketException.class, () -> parkingBoy.takeCar(ticket));
+    }
 }

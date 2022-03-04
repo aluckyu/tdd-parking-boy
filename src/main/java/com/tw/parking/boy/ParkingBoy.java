@@ -19,6 +19,6 @@ public class ParkingBoy {
     public Car takeCar(Ticket ticket) {
         return parkingLots.stream().filter(parkingLot -> parkingLot.hasCar(ticket)).findFirst()
                 .map(parkingLot -> parkingLot.takeCar(ticket))
-                .orElse(null);
+                .orElseThrow(InvalidTicketException::new);
     }
 }
