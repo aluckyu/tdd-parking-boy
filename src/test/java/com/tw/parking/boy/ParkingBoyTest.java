@@ -49,16 +49,14 @@ public class ParkingBoyTest {
 
     @Test
     void should_take_car_successfully_when_take_car_given_valid_ticket() {
-        Car car = new Car();
-        ParkingLot firstParkingLot = new ParkingLot(10);
-        ParkingLot secondParkingLot = new ParkingLot(10);
-        List<ParkingLot> parkingLots = Lists.newArrayList(firstParkingLot, secondParkingLot);
+        Car parkingCar = new Car();
+        List<ParkingLot> parkingLots = Lists.newArrayList(new ParkingLot(10), new ParkingLot(10));
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        Ticket ticket = parkingBoy.parking(car);
+        Ticket ticket = parkingBoy.parking(parkingCar);
 
         Car takingCar = parkingBoy.takeCar(ticket);
 
         assertNotNull(takingCar);
-        assertEquals(takingCar, car);
+        assertEquals(takingCar, parkingCar);
     }
 }
