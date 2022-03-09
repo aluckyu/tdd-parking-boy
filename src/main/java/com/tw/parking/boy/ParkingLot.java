@@ -2,7 +2,6 @@ package com.tw.parking.boy;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class ParkingLot {
     private final int capacity;
@@ -23,7 +22,7 @@ public class ParkingLot {
     }
 
     public Car takeCar(Ticket ticket) {
-        if (Objects.isNull(ticketCarMap.get(ticket))) {
+        if (!hasCar(ticket)) {
             throw new InvalidTicketException();
         }
 
