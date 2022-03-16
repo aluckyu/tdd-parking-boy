@@ -3,7 +3,7 @@ package com.tw.parking.boy;
 import java.util.List;
 
 public class ParkingBoy {
-    private final List<ParkingLot> parkingLots;
+    protected final List<ParkingLot> parkingLots;
 
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
@@ -20,5 +20,13 @@ public class ParkingBoy {
         return parkingLots.stream().filter(parkingLot -> parkingLot.hasCar(ticket)).findFirst()
                 .map(parkingLot -> parkingLot.takeCar(ticket))
                 .orElseThrow(InvalidTicketException::new);
+    }
+
+    public boolean hasCapacity() {
+        return parkingLots.stream().anyMatch(ParkingLot::hasCapacity);
+    }
+
+    public boolean hasCar(Ticket ticket) {
+        return parkingLots.stream().anyMatch(parkingLot -> parkingLot.hasCar(ticket));
     }
 }
